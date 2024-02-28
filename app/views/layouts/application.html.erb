@@ -11,6 +11,21 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="bg-gray-800 text-white p-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <div class="flex">
+          <% @pages.each do |page| %>
+            <%= link_to page.title, page_path(page), class: "mr-2" %>
+          <% end %>
+        </div>
+        <!-- Optional Logo or Branding -->
+        <div>
+          <a href="#" class="text-lg font-bold">Your Brand</a>
+        </div>
+      </div>
+    </nav>
+    <main class="container mx-auto my-4">
+      <%= yield %>
+    </main>
   </body>
 </html>

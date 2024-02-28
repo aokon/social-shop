@@ -7,3 +7,7 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+["About Us", "FAQ"].each do |t|
+  Page.create(title: t, content: Faker::Lorem.paragraphs.join("<br>"))
+end
