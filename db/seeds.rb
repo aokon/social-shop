@@ -12,5 +12,7 @@ require "factory_bot"
 FactoryBot.definition_file_paths = %w[./factories ./test/factories ./spec/factories]
 FactoryBot.find_definitions
 
-FactoryBot.create_list(:page, 8)
-FactoryBot.create_list(:category, 20)
+FactoryBot.create_list(:page, 4)
+FactoryBot.create_list(:category, 20).each do |c|
+  FactoryBot.create_list(:product, 100, category: c)
+end
