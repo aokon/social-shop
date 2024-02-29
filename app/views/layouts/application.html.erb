@@ -14,6 +14,7 @@
     <nav class="bg-gray-800 text-white p-4">
       <div class="container mx-auto flex justify-between items-center">
         <div class="flex">
+          <%= link_to "Home", root_path, class: "mr-2" %>
           <% @pages.each do |page| %>
             <%= link_to page.title, page_path(page), class: "mr-2" %>
           <% end %>

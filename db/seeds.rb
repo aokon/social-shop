@@ -7,7 +7,10 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+require "factory_bot"
 
-["About Us", "FAQ"].each do |t|
-  Page.create(title: t, content: Faker::Lorem.paragraphs.join("<br>"))
-end
+FactoryBot.definition_file_paths = %w[./factories ./test/factories ./spec/factories]
+FactoryBot.find_definitions
+
+FactoryBot.create_list(:page, 8)
+FactoryBot.create_list(:category, 20)
