@@ -5,6 +5,9 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @pagy, @products = pagy(@category.products)
+    scope = @category.products
+    scope = scope.where(color: params[:color]) if params[:color]
+
+    @pagy, @products = pagy(scope)
   end
 end

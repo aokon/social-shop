@@ -1,19 +1,36 @@
 <h1 class="text-2xl font-bold mb-6">Category: <%= @category.name %></h1>
 
-<div class="flex flex-wrap">
-  <% @products.each do |p| %>
-    <div class="w-1/4 p-4 ">
-      <div class=" mb-4 border border-black bg-gray-300 p-2 text-center flex flex-col">
-        <h3 class="mb-4 text-xl font-bold"><%= p.title %></h3>
-        <%= image_tag p.image_url, alt: p.title %>
-        <div class="my-2">
-          <%= number_to_currency p.price, unit: "$" %>
-        </div>
+<div class="flex">
+  <div class="w-1/4">
+    <%= form_with url: category_path(@category), method: :get, data: { controller: "filters", filters_target: "form",
+                                                                 turbo_frame: "products_#{@category.id}" } do |f| %>
+      <div class="mb-4">
+        <%= f.label :color, "Filter by color" %>
+        <%= f.select :color, options_for_select({"Red" => "red", "Blue" => "blue"}, params[:color]),
+                     { include_blank: true }, { data: { action: "filters#submit" } } %>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+
+  <div class="w-3/4">
+    <%= turbo_frame_tag "products_#{@category.id}" do %>
+      <div class="flex flex-wrap">
+          <% @products.each do |p| %>
+            <div class="p-4 ">
+              <div class=" mb-4 border border-black bg-gray-300 p-2 text-center flex flex-col">
+                <h3 class="mb-4 text-xl font-bold"><%= p.title %></h3>
+                <%= image_tag p.image_url, alt: p.title %>
+                <div class="my-2">
+                  <%= number_to_currency p.price, unit: "$" %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+      </div>
+      <div class="my-2">
+        <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+      </div>
+    <% end %>
+  </div>
 </div>
 
-<div class="my-2">
-  <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
-</div>

@@ -5,6 +5,7 @@ FactoryBot.define do
     currency { "USD" }
     image_url { Faker::LoremFlickr.image }
     quantity { rand(100) }
+    color { [:red, :blue, :black].sample }
     description {
       Faker::Lorem.paragraphs.join("
     <br><br>")
