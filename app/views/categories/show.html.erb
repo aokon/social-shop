@@ -2,30 +2,35 @@
 
 <div class="flex">
   <div class="w-1/4">
-    <%= form_with url: category_path(@category), method: :get, data: { controller: "filters", filters_target: "form",
-                                                                 turbo_frame: "products_#{@category.id}" } do |f| %>
+    <%= form_with url: category_path(@category), method: :get, data: { turbo_frame: "products_#{@category.id}" } do |f| %>
       <div class="mb-4">
         <%= f.label :color, "Filter by color" %>
-        <%= f.select :color, options_for_select({"Red" => "red", "Blue" => "blue"}, params[:color]),
-                     { include_blank: true }, { data: { action: "filters#submit" } } %>
+        <%= f.select :color, options_for_select({"Red" => "red", "Blue" => "blue"},
+                                                params[:color]),{ include_blank: true }, onchange: "this.form.requestSubmit();"  %>
       </div>
     <% end %>
   </div>
 
+  <a href="#" onclick="getElementById('aaa').show(); return false;">AAAAAA</a>
+  <dialog id="aaa">
+    <a href="#" onclick="getElementById('aaa').close(); return false;">AAAAAA</a>
+    <h1>Foo bar</h1>
+  </dialog>
+
   <div class="w-3/4">
     <%= turbo_frame_tag "products_#{@category.id}" do %>
       <div class="flex flex-wrap">
-          <% @products.each do |p| %>
-            <div class="p-4 ">
-              <div class=" mb-4 border border-black bg-gray-300 p-2 text-center flex flex-col">
-                <h3 class="mb-4 text-xl font-bold"><%= p.title %></h3>
-                <%= image_tag p.image_url, alt: p.title %>
-                <div class="my-2">
-                  <%= number_to_currency p.price, unit: "$" %>
-                </div>
+        <% @products.each do |p| %>
+          <div class="p-4 ">
+            <div class=" mb-4 border border-black bg-gray-300 p-2 text-center flex flex-col">
+              <h3 class="mb-4 text-xl font-bold"><%= p.title %></h3>
+              <%= image_tag p.image_url, alt: p.title %>
+              <div class="my-2">
+                <%= number_to_currency p.price, unit: "$" %>
               </div>
             </div>
-          <% end %>
+          </div>
+        <% end %>
       </div>
       <div class="my-2">
         <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
