@@ -26,6 +26,12 @@
         <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
       </div>
     <% end %>
+    <div class="mb-4">
+      <%= turbo_frame_tag "test", src: settings_category_path(@category), loading: "lazy" do %>
+        loading...
+      <% end %>
+    </div>
+
   </div>
 </div>
 

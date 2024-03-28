@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", :as => :rails_health_check
 
   resources :categories, only: [:index, :show] do
+    get :settings, on: :member
     resources :products
   end
   resources :pages, only: [:show]

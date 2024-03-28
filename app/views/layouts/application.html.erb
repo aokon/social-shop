@@ -29,7 +29,7 @@
       <div id="flash" data-controller="flash">
         <%= render partial: "shared/flash" %>
       </div>
-      <%= turbo_frame_tag "modal_body", data: { action: "turbo:frame-render->modal#show" } %>
+      <%= turbo_frame_tag "modal_body" %>
       <%= yield %>
     </main>
   </body>

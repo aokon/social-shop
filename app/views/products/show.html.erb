@@ -1,3 +1,5 @@
+<h1>Product <%= @product.title %></h1>
+
 <%= turbo_frame_tag "modal_body" do %>
   <dialog id="aaa" data-controller="modal" data-modal-target="modal" >
     <h1><%= @product.title %></h1>
