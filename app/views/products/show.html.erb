@@ -1,0 +1,5 @@
+<%= turbo_frame_tag "modal_body", data: { action: "turbo:frame-render->modal#show" } do %>
+  <dialog id="aaa">
+    <h1><%= @product.title %></h1>
+  </dialog>
+<% end%>

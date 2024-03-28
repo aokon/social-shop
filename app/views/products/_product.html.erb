@@ -7,6 +7,9 @@
     </div>
 
     <div class="my-2">
+      <%= link_to "View", category_product_path(category, product),
+        data: { 'turbo-frame': :modal_body } %>
+
       <%= button_to "Destroy", category_product_path(category, product), method: :delete,
         form: { data: { turbo_confirm: "Are you sure?" } } %>
     </div>
