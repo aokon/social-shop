@@ -1,4 +1,5 @@
 <h1 class="text-2xl font-bold mb-6">Category: <%= @category.name %></h1>
+<%= turbo_stream_from "inbox" %>
 
 <div class="flex">
   <div class="w-1/4">
@@ -18,7 +19,7 @@
   </dialog>
 
   <div class="w-3/4">
-    <%= turbo_frame_tag "products_#{@category.id}" do %>
+    <%= turbo_frame_tag "categories_#{@category.id}" do %>
       <div class="flex flex-wrap">
         <%= render partial: "products/product", collection: @products, locals: { category: @category } %>
       </div>
