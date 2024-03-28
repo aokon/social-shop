@@ -6,7 +6,6 @@ export default class extends Controller {
   }
 
   submit(_event) {
-    console.log("here")
     this.formTarget.requestSubmit()
   }
 }

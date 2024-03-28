@@ -1,0 +1,14 @@
+<div class="p-4" id=<%= dom_id(product) %>>
+  <div class=" mb-4 border border-black bg-gray-300 p-2 text-center flex flex-col">
+    <h3 class="mb-4 text-xl font-bold"><%= product.title %></h3>
+    <%= image_tag product.image_url, alt: product.title %>
+    <div class="my-2">
+      <%= number_to_currency product.price, unit: "$" %>
+    </div>
+
+    <div class="my-2">
+      <%= button_to "Destroy", category_product_path(category, product), method: :delete,
+        form: { data: { turbo_confirm: "Are you sure?" } } %>
+    </div>
+  </div>
+</div>

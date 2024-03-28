@@ -20,17 +20,7 @@
   <div class="w-3/4">
     <%= turbo_frame_tag "products_#{@category.id}" do %>
       <div class="flex flex-wrap">
-        <% @products.each do |p| %>
-          <div class="p-4 ">
-            <div class=" mb-4 border border-black bg-gray-300 p-2 text-center flex flex-col">
-              <h3 class="mb-4 text-xl font-bold"><%= p.title %></h3>
-              <%= image_tag p.image_url, alt: p.title %>
-              <div class="my-2">
-                <%= number_to_currency p.price, unit: "$" %>
-              </div>
-            </div>
-          </div>
-        <% end %>
+        <%= render partial: "products/product", collection: @products, locals: { category: @category } %>
       </div>
       <div class="my-2">
         <%== pagy_nav(@pagy) if @pagy.pages > 1 %>

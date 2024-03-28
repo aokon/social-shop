@@ -1,0 +1,6 @@
+<% if flash[:notice].present? %>
+  <div class="mb-4 text-green-500" data-flash-target="container">
+    <%= flash[:notice] %>
+    <button data-action="flash#close">Close [X]</button>
+  </div>
+<% end %>

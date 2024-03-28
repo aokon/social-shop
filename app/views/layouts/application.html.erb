@@ -26,6 +26,9 @@
       </div>
     </nav>
     <main class="container mx-auto my-4">
+      <div id="flash" data-controller="flash">
+        <%= render partial: "shared/flash" %>
+      </div>
       <%= yield %>
     </main>
   </body>
