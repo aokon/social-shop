@@ -4,7 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["modal"]
 
-  show(event) {
+  connect() {
     this.modalTarget.showModal();
   }
   // hide modal when clicking ESC

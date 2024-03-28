@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
     @product.destroy!
 
     respond_to do |format|
-      format.html { rediredt_to category_path(@category) }
+      format.html { redirect_to category_path(@category) }
       format.turbo_stream { flash.now[:notice] = "Product #{@product.title} was deleted!" }
     end
   end
