@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:index, :show] do
     get :settings, on: :member
+    get :test_mode, on: :member
     resources :products
   end
   resources :pages, only: [:show]

@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import ActivityController from "./activity_controller"
+application.register("activity", ActivityController)
+
 import FiltersController from "./filters_controller"
 application.register("filters", FiltersController)
 

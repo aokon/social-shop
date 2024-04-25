@@ -10,4 +10,13 @@ class CategoriesController < ApplicationController
 
     @pagy, @products = pagy(scope)
   end
+
+  def test_mode
+    sleep 2
+    @result = params[:option]
+
+    respond_to do |format|
+      format.turbo_stream
+    end
+  end
 end

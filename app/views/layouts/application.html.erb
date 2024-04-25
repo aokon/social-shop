@@ -4,6 +4,7 @@
     <title>SocialStore</title>
     <meta name="view-transition" content="same-origin" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= turbo_refreshes_with scroll: :preserve, method: :morph %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 

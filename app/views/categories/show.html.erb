@@ -1,25 +1,31 @@
 <h1 class="text-2xl font-bold mb-6">Category: <%= @category.name %></h1>
-<%= turbo_stream_from "inbox" %>
+<%= turbo_stream_from @category %>
 
 <div class="flex">
-  <div class="w-1/4">
+  <div class="w-1/4" data-controller="activity">
     <%= form_with url: category_path(@category), method: :get, data: { turbo_frame: "products_#{@category.id}" } do |f| %>
+      <div class="mb-4">
+        <%= f.select :mode, options_for_select({ "Pick option" => nil, "Stay at home" => "home", "Go running" => "running"}, params[:color]),
+          {include_blank: true}, {data: {activity_target: "input", url: test_mode_category_url(@category), action: "change->activity#select"}} %>
+
+        <div class="my-2">
+          <div data-activity-target="loading" class="hidden">Loading...</div>
+          <div id="option"></div>
+        </div>
+      </div>
       <div class="mb-4">
         <%= f.label :color, "Filter by color" %>
         <%= f.select :color, options_for_select({"Red" => "red", "Blue" => "blue"},
-                                                params[:color]),{ include_blank: true }, onchange: "this.form.requestSubmit();"  %>
+          params[:color]),{ include_blank: true }, onchange: "this.form.requestSubmit();"  %>
       </div>
     <% end %>
   </div>
 
-  <a href="#" onclick="getElementById('aaa').show(); return false;">AAAAAA</a>
-  <dialog id="aaa">
-    <a href="#" onclick="getElementById('aaa').close(); return false;">AAAAAA</a>
-    <h1>Foo bar</h1>
-  </dialog>
-
   <div class="w-3/4">
-    <%= turbo_frame_tag "categories_#{@category.id}" do %>
+    <%= turbo_frame_tag "test", src: settings_category_path(@category) do %>
+      <%= render SkeletonComponent %>
+    <% end %>
+    <%= turbo_frame_tag "categories_#{@category.id}", data: { "turbo-action": "advance" } do %>
       <div class="flex flex-wrap">
         <%= render partial: "products/product", collection: @products, locals: { category: @category } %>
       </div>
@@ -29,10 +35,8 @@
     <% end %>
     <div class="mb-4">
       <%= turbo_frame_tag "test", src: settings_category_path(@category), loading: "lazy" do %>
-        loading...
+        <%= render partial: "shared/skeleton" %>
       <% end %>
     </div>
-
   </div>
 </div>
-

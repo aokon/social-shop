@@ -1,0 +1,7 @@
+<%= turbo_stream.replace "option" do %>
+  <%= turbo_frame_tag "option" do %>
+    <% unless @result.blank? %>
+      Then you should <%= @result.downcase %>!
+    <% end %>
+  <% end %>
+<% end %>

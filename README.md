@@ -1,24 +1,18 @@
-# README
+# Social Shop
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Playground project for discovering [Turbo](https://github.com/hotwired/turbo-rails) features and patterns.
 
-Things you may want to cover:
+Most of the work was done during [TRUG](https://trug.pl/) meetup.
 
-* Ruby version
 
-* System dependencies
+## Inspirations
 
-* Configuration
+* [Component driven development on Rails with Phlex](https://fly.io/ruby-dispatch/component-driven-development-on-rails-with-phlex/)
 
-* Database creation
+* [How to broadcast in turbo](https://blog.corsego.com/turbo-hotwire-broadcasts)
 
-* Database initialization
+* [Phlex demo app](https://github.com/rubymonolith/demo)
 
-* How to run the test suite
+* [PhlexUI](https://phlexui.com/)
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* [Turbo stream via request.js](https://jasonchee.me/writings/rails-requestjs/)

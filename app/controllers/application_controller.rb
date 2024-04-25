@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   include Pagy::Backend
 
+  # layout -> { ApplicationLayout }
+
   before_action :set_pages
 
   private
