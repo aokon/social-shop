@@ -1,16 +1,5 @@
 <h1 class="text-2xl font-bold mb-6">Categories#index</h1>
 
 <div class="flex flex-wrap content-between">
-  <% @categories.each do |c| %>
-    <div class="w-1/4 p-4 ">
-      <div class=" mb-4 border border-black bg-gray-300 p-2 text-center flex flex-col">
-        <h3 class="mb-4 text-xl font-bold">
-          <%= link_to c.name, category_path(c) %>
-        </h3>
-        <%= link_to category_path(c) do %>
-          <%= image_tag c.image_url, alt: c.name %>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
+  <%= render partial: "categories/category", collection: @categories %>
 </div>

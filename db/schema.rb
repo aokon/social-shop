@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_29_155852) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_27_162922) do
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "promo", default: 0
   end
 
   create_table "pages", force: :cascade do |t|

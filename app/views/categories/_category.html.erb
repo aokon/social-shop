@@ -1,0 +1,17 @@
+<div class="w-1/4 p-4 " id="<%= dom_id(category) %>">
+  <div class=" mb-4 border border-black <%= category.default? ? "bg-gray-300" : "bg-yellow-300"%> p-2 text-center flex flex-col">
+    <h3 class="mb-4 text-xl font-bold">
+      <%= link_to category.name, category_path(category) %>
+    </h3>
+    <div class="p-2 mb-4">
+      <%= link_to category_path(category) do %>
+        <%= image_tag category.image_url, alt: category.name, width: "300", height: "300" %>
+      <% end %>
+    </div>
+    <div class="p-2">
+      <%= button_to "Change promo status", promo_category_path(category),
+        form: {data: {turbo: true, turbo_stream: true}, class: "border-solid border border-green-500 "} %>
+
+    </div>
+  </div>
+</div>
